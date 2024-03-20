@@ -1,3 +1,4 @@
+/* GERAL*/
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +13,7 @@
   --brand-light: hsl(148, 23%, 89%);
   --nav-height: 7.2rem;
 
-  font-size: 62.5%;
+  font-size: 62.5%; /* 1 rem = 10px */
 }
 html,
 body {
@@ -20,28 +21,32 @@ body {
   height: 100%;
 }
 body {
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   font-size: 1.6rem;
-
+  
   text-align: center;
+  overflow: overlay;
 }
 .wrapper {
   width: 37.5rem;
   margin-right: auto;
   margin-left: auto;
-  padding-inline: 2.4rem;
 }
 ul {
   list-style: none;
 }
+
+/* HEADER*/
 header {
   width: 37.5rem;
+  text-align: center;
   margin-right: auto;
   margin-left: auto;
+ 
   margin: calc(4.1rem + var(--nav-height));
 }
 header::before {
-  content: '';
+  content: "";
   width: 100%;
   height: calc(108rem + var(--nav-height));
   background-color: var(--brand-light);
@@ -101,16 +106,17 @@ header img {
   object-position: 0 2rem;
 }
 div.stats {
-  width: 32.7rem;
-  padding-block: 4rem;
-  margin-inline: auto;
-  background-color: var(--brand-beige);
-  border: 1px solid var(--brand-light);
-  border-radius: 0.6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  width: 32.7rem;
+  padding-block: 4rem;
+  margin-inline: auto;
+  border-radius: 0.6rem;
   gap: 6rem;
+  border: 1px solid var(--brand-light);
+  background-color: var(--brand-beige);
 }
 
 .stat h3 {
@@ -137,10 +143,12 @@ nav {
   transform: translateX(-50%);
 }
 
-nav.wrapper {
+div.wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
+  
 }
 nav.scroll {
   background-color: var(--primary-color);
@@ -149,12 +157,21 @@ nav.scroll {
 nav.scroll svg:nth-child(1) path {
   fill: white;
 }
-nav.scroll svg:nth-child(2) path {
+nav.scroll button path {
   stroke: white;
 }
-
+nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/* menu EXpanded*/
 body.menu-expanded {
   overflow: hidden;
+}
+
+body.menu-expanded > :not(nav) {
+  display: none;
 }
 
 .menu,
@@ -172,14 +189,17 @@ body.menu-expanded .close-menu {
 body.menu-expanded .menu {
   position: fixed;
   top: 0;
-  left: 0;
   background-color: var(--primary-color);
-  width: 100vw;
-  height: 100vw;;
+  height: 150rem;
+  width:  40rem;
+
+  padding-top: var(--nav-height);
+  
 }
-body.menu-expanded .nav {
+body.menu-expanded nav {
   position: relative;
 }
+
 
 .menu ul:nth-child(1) {
   display: flex;
@@ -216,4 +236,18 @@ body.menu-expanded .nav {
   align-items: center;
   justify-content: center;
   gap: 3.2rem;
+}
+
+body.menu-expanded .logo,
+body.menu-expanded  button {
+  position: relative;
+  z-index: 100;
+}
+
+body.menu-expanded .logo path {
+  fill: white;
+}
+
+body.menu-expanded button svg:nth-child(2) path {
+  stroke: white;
 }
